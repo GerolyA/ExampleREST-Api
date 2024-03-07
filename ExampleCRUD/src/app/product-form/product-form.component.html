@@ -1,0 +1,20 @@
+<form class="mx-auto w-50 mt-5 mb-5">
+    <legend class="fw-bolder text-center display-2">Termék űrlap</legend>
+    <div class="mb-3">
+        <label for="productName" class="form-label">Termék neve</label>
+        <input type="text" class="form-control" id="productName" [(ngModel)]="name" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="manufacturer" class="form-label">Termék gyártója</label>
+        <input type="text" class="form-control" id="manufacturer" [(ngModel)]="manufacturer" name="manufacturer">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Termék ára (Ft)</label>
+        <input type="number" class="form-control" id="price" [(ngModel)]="price" name="price">
+    </div>
+    <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-primary w-50" (click)="id==0?addProduct():updateProduct(id)">Mentés</button>
+        <a href="/ExampleCRUD" class="btn btn-warning w-50">Vissza</a>
+    </div>
+</form>
+{{id}}
