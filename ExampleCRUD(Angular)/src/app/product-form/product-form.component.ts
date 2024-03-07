@@ -12,7 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ProductFormComponent implements DoCheck, OnInit {
 
   product: any = "";
-  id: number = 3;
+  id: number = 0;
   name: string = "";
   manufacturer: string = "";
   price: number = 0;
@@ -22,6 +22,7 @@ export class ProductFormComponent implements DoCheck, OnInit {
 
   ngOnInit() {
     this.id = Number(this.router.url.substring(this.router.url.lastIndexOf('/') + 1));
+    this.getProductsById(this.id);
   }
 
   getProductsById(id: number): void {

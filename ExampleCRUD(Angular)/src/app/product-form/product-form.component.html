@@ -1,25 +1,31 @@
-<h1 class="display-1 bg-danger fw-bolder" *ngIf="errorMessage">{{errorMessage}}</h1>
+<h1 class="display-1 bg-danger fw-bolder" *ngIf="errorMessage && id != 0">{{errorMessage}} </h1>
 <form class="mx-auto w-50 mt-5 mb-5" [formGroup]="productForm">
-        <legend class="fw-bolder text-center display-2">Termék űrlap</legend>
-        <div class="mb-3">
-            <label for="productName" class="form-label">Termék neve</label>
-            <input type="text" class="form-control" id="productName" [(ngModel)]="name" name="name" formControlName="name">
-        <small *ngIf="productForm.get('name')?.errors?.['required']&& productForm.controls.name.touched">Név megadása kötelező</small>
-        </div>
-        <div class="mb-3">
-            <label for="manufacturer" class="form-label">Termék gyártója</label>
-            <input type="text" class="form-control" id="manufacturer" [(ngModel)]="manufacturer" name="manufacturer" formControlName="manufacturer">
-            <small *ngIf="productForm.get('manufacturer')?.errors?.['required']&& productForm.controls.manufacturer.touched">Gyártó megadása
-                kötelező</small>
-        </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">Termék ára (Ft)</label>
-            <input type="number" class="form-control" id="price" min="1" [(ngModel)]="price" name="price" formControlName="price">
-            <small *ngIf="productForm.controls.price.value=='Infinity' && productForm.controls.price.touched">Ár megadása
-                kötelező</small>
-        </div>
-        <div class="d-flex justify-content-center gap-3">
-            <button [disabled]="disabled" class="btn btn-primary w-50" (click)="id==0?addProduct():updateProduct(id)">Mentés</button>
-            <a href="/ExampleCRUD" class="btn btn-warning w-50">Vissza</a>
-        </div>
-    </form>
+    <legend class="fw-bolder text-center display-2">Termék űrlap</legend>
+    <div class="mb-3">
+        <label for="productName" class="form-label">Termék neve</label>
+        <input type="text" class="form-control" id="productName" [(ngModel)]="name" name="name" formControlName="name">
+        <small *ngIf="productForm.get('name')?.errors?.['required']&& productForm.controls.name.touched">Név megadása
+            kötelező</small>
+    </div>
+    <div class="mb-3">
+        <label for="manufacturer" class="form-label">Termék gyártója</label>
+        <input type="text" class="form-control" id="manufacturer" [(ngModel)]="manufacturer" name="manufacturer"
+            formControlName="manufacturer">
+        <small
+            *ngIf="productForm.get('manufacturer')?.errors?.['required']&& productForm.controls.manufacturer.touched">Gyártó
+            megadása
+            kötelező</small>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Termék ára (Ft)</label>
+        <input type="number" class="form-control" id="price" min="1" [(ngModel)]="price" name="price"
+            formControlName="price">
+        <small *ngIf="productForm.controls.price.value=='Infinity' && productForm.controls.price.touched">Ár megadása
+            kötelező</small>
+    </div>
+    <div class="d-flex justify-content-center gap-3">
+        <button [disabled]="disabled" class="btn btn-primary w-50"
+            (click)="id==0?addProduct():updateProduct(id)">Mentés</button>
+        <a href="/ExampleCRUD" class="btn btn-warning w-50">Vissza</a>
+    </div>
+</form>
