@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace ExampleREST_API.Model
 {
@@ -23,7 +22,6 @@ namespace ExampleREST_API.Model
             {
                 throw new Exception("Valami hiba történt!");
             }
-
         }
 
         public static int FindIndexById(int id)
@@ -51,9 +49,7 @@ namespace ExampleREST_API.Model
             {
 
                 throw new Exception("ID nem található");
-
             }
-
         }
 
         public static void AddProduct(ProductModel product)

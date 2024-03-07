@@ -11,24 +11,44 @@ import { IProduct } from "../iProduct";
 
 export class ExampleCRUDComponent implements OnInit {
 
-  public products: IProduct[] = [];
-
+  products: IProduct[] = [];
+  errorMessage: string = "";
 
   constructor(private _productService: ProductsService) { }
   
 
-  ngOnInit() { 
+  ngOnInit() {
     this._productService.getProducts()
-      .subscribe(data => this.products = data);
+      .subscribe(
+        {
+          next: (data) => this.products = data,
+          error: (err: any) => {
+            if (err.status == (0)) {
+              this.errorMessage = "Nem elérhető a szerver";
+            } else if (err.status == 500) {
+              this.errorMessage = "Nincs ilyen ID";
+            } else {
+              this.errorMessage = "valami hiba történt";
+            }
+          }
+        }
+      )
   }
-
 
   deleteProduct(id: number): void {
-    this._productService.deleteProduct(id).subscribe();
-    window.location.reload();
+    this._productService.deleteProduct(id).subscribe(
+      {
+        next: ()=> window.location.reload(),
+        error: (err: any) => {
+          if (err.status == (0)) {
+            this.errorMessage = "Nem elérhető a szerver";
+          } else if (err.status == 500) {
+            this.errorMessage = "Nincs ilyen ID";
+          } else {
+            this.errorMessage = "valami hiba történt";
+          }
+        }
+      }
+    );
   }
-
-
-
-
 }

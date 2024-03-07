@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExampleCRUDComponent } from './example-crud/example-crud.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './product.service';
 import { ProductFormComponent } from './product-form/product-form.component';
@@ -20,6 +20,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
